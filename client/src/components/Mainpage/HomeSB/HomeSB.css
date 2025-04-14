@@ -1,0 +1,121 @@
+/* General HomeSB Container */
+.homeSB-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Main Content Area */
+.homeSB-content {
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.homeSB-title {
+    font-size: 2rem;
+    color: #000000;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.homeSB-subtitle {
+    font-size: 1.6rem;
+    color: #444444;
+    margin-bottom: 10px;
+}
+
+.homeSB-paragraph {
+    color: #555555;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.homeSB-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.homeSB-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+/* About Section */
+.homeSB-about {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-left: 5px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Features Section */
+.homeSB-features {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Call to Action Section */
+.homeSB-call-to-action {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.homeSB-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.homeSB-button:hover {
+    background-color: #b30000;
+    transform: scale(1.05);
+}
+
+.homeSB-button-outline {
+    background-color: transparent;
+    color: #060707;
+    border: 2px solid #0c0e10;
+}
+
+.homeSB-button-outline:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .homeSB-content {
+        padding: 20px;
+    }
+}

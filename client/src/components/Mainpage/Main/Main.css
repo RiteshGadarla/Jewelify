@@ -1,0 +1,36 @@
+.main-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #1c1c1c;
+}
+
+.content {
+    width: 100%;
+    margin-left: 250px; /* Matches the sidebar width */
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    color: #fff;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        width: 200px;
+        transform: translateX(-250px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+}

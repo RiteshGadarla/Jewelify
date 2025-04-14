@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 40px;
+
+
+}
+
+
+.signup-form {
+    padding: 40px;
+}
+
+.navbar_shadow {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    box-shadow: rgba(102, 116, 204, 0.25) 0px 4px 10px;
+    border-radius: 8px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navItem_lg {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+
+.navItem_lg:hover {
+    color: rgb(102, 116, 204) !important;
+}
+
+.navItem_lg::after {
+    position: absolute;
+    background-color: rgb(102, 116, 204);
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.navItem_lg:hover::after {
+    transform: scaleX(1);
+}
+
+#login_signup_button_lg {
+    color: #ffffff;
+    font-family: "Roboto";
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid white;
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
+}
+
+#login_signup_button_lg:hover {
+    border: none;
+    transform: scaleX(1.1);
+    color: white;
+    background-color: rgb(102, 116, 204);
+}
+
+
+.signup-box form .links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup-box form .links a {
+    color: #8f8f8f;
+    font-size: 0.99em;
+    text-decoration: none;
+}
+
+.signup-box form .links a:hover {
+    color: #fff;
+}
+
+
+.signup-box {
+    position: relative;
+    width: 400px;
+    height: 680px;
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.signup-box form {
+    position: absolute;
+    padding: 20px 40px 30px 40px;
+    inset: 5px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-box form h2 {
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+
+.signup-box form .inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.signup-box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: white;
+    font-size: 1rem;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.signup-box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    transition: 0.5s;
+}
+
+.signup-box form .inputBox input:valid ~ span,
+.signup-box form .inputBox input:focus ~ span {
+    color: #fff;
+    font-size: 0.9em;
+    transform: translateY(-34px);
+}
+
+.signup-box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.signup-box form input[type="submit"] {
+    width: 100px;
+    cursor: pointer;
+    padding: 9px 25px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+
+.signup-box form .links {
+    display: flex;
+    justify-content: center;
+    margin-top: 13px; /* Adjust spacing from the submit button */
+    margin-bottom: 15px;
+    color: #8f8f8f;
+}
+
+.signup-box form .links a {
+    color: rgb(102, 116, 204);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px; /* Add some spacing between text and link */
+}
+
+
+.signup-box form .links a:hover {
+    color: #fff;
+}
+
+.signup-box form .links p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+.signup-box form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+.have-account {
+    margin-top: 15px;
+    text-align: center;
+    color: #888;
+}
+
+.signin-link {
+    color: #3182ce;
+    text-decoration: none;
+}
+
+.alternative-signin {
+    text-align: center;
+    margin: 3px 0 10px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.social-icon {
+    text-align: center;
+}
+
+.social-icon a {
+    margin: 10px 5px;
+    color: #888;
+}
+
+.social-icon a:hover {
+    color: white;
+}
+
+
+.submit-btn {
+    display: flex;
+    width: 90%;
+    padding: 14px;
+    background-color: rgb(102, 116, 204);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.submit-btn:hover {
+    background-color: rgb(81, 94, 170);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Focus effect */
+.submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 116, 204, 0.7);
+}
+
+/* Active effect */
+.submit-btn:active {
+    transform: translateY(2px); /* Button press effect */
+}
+
+/* Google Button Styles */
+/* Google Button Styles */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff; /* White background */
+    color: #757575; /* Light text color */
+    border: 1px solid #dcdcdc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 15px; /* Padding for better spacing */
+    font-size: 14px; /* Text size */
+    font-weight: 600; /* Semi-bold text */
+    cursor: pointer; /* Pointer on hover */
+    transition: all 0.3s ease; /* Smooth transition */
+    width: 100%; /* Full width */
+    margin-top: 10px; /* Space from the form fields */
+}
+
+.google-btn:hover {
+    background-color: #f8f8f8; /* Slight background change on hover */
+    border-color: #bdbdbd; /* Darker border on hover */
+    color: #333333; /* Darker text */
+}
+
+.google-icon {
+    margin-right: 10px; /* Space between logo and text */
+    display: flex;
+    align-items: center; /* Align logo vertically */
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .google-btn {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .google-icon {
+        width: 18px;
+        height: 18px;
+    }
+}

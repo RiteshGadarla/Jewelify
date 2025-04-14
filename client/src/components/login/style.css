@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand-name a {
+    text-decoration: none;
+    font-size: 30px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black !important;
+}
+
+.navbar_shadow {
+    background-color: black;
+    padding: 20px;
+    text-align: center;
+    box-shadow: rgba(102, 116, 204, 0.25) 0px 4px 10px;
+    border-radius: 8px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navItem_lg {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+
+.navItem_lg:hover {
+    color: rgb(102, 116, 204) !important;
+}
+
+.navItem_lg::after {
+    position: absolute;
+    background-color: rgb(102, 116, 204);
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: -1px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.navItem_lg:hover::after {
+    transform: scaleX(1);
+}
+
+#login_signup_button_lg {
+    color: #ffffff;
+    font-family: "Roboto";
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: transparent;
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid white;
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
+}
+
+#login_signup_button_lg:hover {
+    border: none;
+    transform: scaleX(1.1);
+    color: white;
+    background-color: rgb(102, 116, 204);
+}
+
+.login-box {
+    position: relative;
+    width: 380px;
+    height: 600px;
+    background-color: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid white;
+}
+
+.inputBox {
+    border-bottom: 1px solid white;
+}
+
+.login-box form {
+    position: absolute;
+    padding: 50px 40px;
+    inset: 5px;
+    border-radius: 8px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box form h2 {
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+}
+
+.login-box form .inputBox {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.login-box form .inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: white;
+    font-size: 1rem;
+    transition: 0.5s;
+    z-index: 10;
+}
+
+.login-box form .inputBox span {
+    position: absolute;
+    left: 0;
+    padding: 20px 10px 10px;
+    pointer-events: none;
+    color: #8f8f8f;
+    transition: 0.5s;
+}
+
+.login-box form .inputBox input:valid ~ span,
+.login-box form .inputBox input:focus ~ span {
+    color: #fff;
+    font-size: 0.9em;
+    transform: translateY(-34px);
+}
+
+.login-box form .inputBox i {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.login-box form .links {
+    display: flex;
+    justify-content: center;
+    margin-top: 13px; /* Adjust spacing from the submit button */
+    margin-bottom: 15px;
+    color: #8f8f8f;
+}
+
+.login-box form .links a {
+    color: rgb(102, 116, 204);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px; /* Add some spacing between text and link */
+}
+
+
+.login-box form .links a:hover {
+    color: #fff; /* Hover effect for the link */
+}
+
+
+.login-box form .links a:hover {
+    color: #fff;
+}
+
+.login-box form .links p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+.login-box form input[type="submit"] {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    padding: 9px 25px;
+    border-radius: 4px;
+}
+
+.login-box form input[type="submit"]:active {
+    opacity: 0.8;
+}
+
+.alternative-signin {
+    text-align: center;
+    margin: 20px 0 10px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.social-icon {
+    text-align: center;
+}
+
+.social-icon a {
+    margin: 10px 5px;
+    color: #888;
+}
+
+.g-recaptcha {
+    margin-top: 10px;
+}
+
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+input[type="submit"] {
+    padding: 20px 40px; /* Increase padding for larger button */
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: rgb(102, 116, 204);
+    color: white;
+    border: none;
+    font-size: 18px; /* Increase font size */
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50px; /* Increase width of the button */
+}
+
+/* Hover effect */
+input[type="submit"]:hover {
+    background-color: rgb(81, 94, 170);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Focus effect */
+input[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 116, 204, 0.7);
+}
+
+/* Active effect */
+input[type="submit"]:active {
+    transform: translateY(2px); /* Button press effect */
+}
