@@ -8,6 +8,8 @@
 
 ## Features
 
+| Feature | Description |
+|--------|-------------|
 | 🎨 **Sketch-to-Jewelry** | Upload a sketch → get a realistic gold/diamond/platinum jewelry image |
 | 💬 **Text-to-Design** | Generate jewelry visuals from text prompts |
 | 📁 **Collection Gallery** | Browse and manage all your generated designs |
