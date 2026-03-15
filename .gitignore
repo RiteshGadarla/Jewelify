@@ -59,16 +59,16 @@ yarn-error.log*
 # Environment configuration (contains secrets — do NOT commit)
 # Keep .env.example files (they are safe templates)
 # -------------------------------------------------------------
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-api/.env
-api/model/.env
-client/.env
+# Ignore all env files
 *.env
+.env
+.env.*
+**/.env
+**/*.env
 
+# Allow example env file
+!.env.example
+!**/.env.example
 # -------------------------------------------------------------
 # Python virtual environments
 # -------------------------------------------------------------

@@ -41,6 +41,10 @@ npm install
 ./scripts/setup.sh
 ```
 
+- Download the trained `.h5` model from [this link](https://drive.google.com/file/d/1FFodj1KsoHN1KyNaPr5T_0WbR3CCn1UL/view?usp=sharing).  
+- Place the downloaded file in the `api/model/` folder.  
+- Ensure that the file name is **`generator.h5`**.  
+
 ### 3. Configure Environment
 
 Jewelify uses environment variables for configuration. Copy the example files and update them with your settings.
@@ -70,31 +74,6 @@ npm run actual
 ### 🌐 Web Only *(Node.js API + React, no Flask)*
 ```bash
 npm run web
-```
-
----
-
-## Architecture
-
-```
-jewelify/
-├── api/                    # Node.js Express backend (auth, sessions, MongoDB)
-│   ├── server.js
-│   ├── user.js
-│   ├── .env.example        ← copy to .env
-│   └── model/              # Python Flask AI server
-│       ├── app.py          ← supports --mode dev / --mode actual
-│       ├── mock_response.py← mock response generator (dev mode)
-│       ├── mock_images/    ← placeholder images for dev mode
-│       ├── image_processing.py
-│       ├── instruct.py
-│       ├── requirements.txt       ← full ML stack
-│       ├── requirements-dev.txt   ← minimal (flask + pillow only)
-│       └── .env.example    ← copy to .env
-├── client/                 # React frontend
-│   └── .env.example        ← copy to .env
-└── scripts/
-    └── setup.sh            ← Python venv + dependency installer
 ```
 
 ---
