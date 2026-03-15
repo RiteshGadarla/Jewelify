@@ -1,158 +1,115 @@
-import React, {useState, useEffect} from "react";
-import {NavLink} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import {
-    AiOutlinePicture,
-    AiOutlineFontSize,
-    AiOutlineStar,
-    AiOutlineUser,
-    AiOutlineAppstore,
-    AiOutlineHome,
-} from "react-icons/ai";
-import {FaGem} from "react-icons/fa"; // Diamond logo
+    FiImage,
+    FiType,
+    FiStar,
+    FiUser,
+    FiFolder,
+    FiHome,
+    FiLogOut,
+    FiChevronLeft,
+    FiChevronRight
+} from "react-icons/fi";
+import { FaGem } from "react-icons/fa";
 import "./Sidebar.css";
 
 export default function Sidebar() {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [showProfilePopup, setShowProfilePopup] = useState(false);
-    const [username, setUsername] = useState("Guest");
+    const [username, setUsername] = useState("Designer");
 
-    // Fetch username and manage session
     useEffect(() => {
         const fetchUsername = async () => {
             try {
-                const response = await fetch("http://localhost:8001/user/main", {
+                const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8001'}/user/main`, {
                     method: "POST",
                     credentials: "include",
                 });
-
-                if (!response.ok) {
-                    throw new Error("Unauthorized access");
+                if (response.ok) {
+                    const data = await response.json();
+                    setUsername(data.username);
+                    sessionStorage.setItem("username", data.username);
                 }
-
-                const data = await response.json();
-                setUsername(data.username);
-                sessionStorage.setItem("username", data.username);
             } catch (error) {
                 console.error("Error fetching username:", error);
-                setUsername("Guest");
             }
         };
-
         fetchUsername();
     }, []);
 
-    // Handle logout logic
     const handleLogout = async () => {
         try {
-            const response = await fetch("http://localhost:8001/user/logout", {
+            const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8001'}/user/logout`, {
                 method: "POST",
                 credentials: "include",
-                headers: {"Content-Type": "application/json"},
+                headers: { "Content-Type": "application/json" },
             });
-
-            const result = await response.json();
             if (response.ok) {
                 sessionStorage.removeItem("username");
-                alert("Logout successful!");
                 window.location.href = "/account/login";
-            } else {
-                alert(result.error || "Logout failed.");
             }
         } catch (error) {
             console.error("Logout Error:", error);
-            alert("An error occurred during logout.");
         }
     };
 
-    // Sidebar collapse toggle
-    const toggleSidebar = () => {
-        setIsCollapsed(!isCollapsed);
-    };
+    const menuItems = [
+        { path: "/account/main/home", icon: <FiHome />, label: "Home" },
+        { path: "/account/main/image-to-image", icon: <FiImage />, label: "Sketch to Real" },
+        { path: "/account/main/text-to-image", icon: <FiType />, label: "Text to Image" },
+        { path: "/account/main/collections", icon: <FiFolder />, label: "Collections" },
+        { path: "/account/main/favourites", icon: <FiStar />, label: "Favorites" }
+    ];
 
     return (
         <aside className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
-            {/* Sidebar Header */}
-            <div className="sidebar-header" onClick={toggleSidebar}>
-                <FaGem className="diamond-icon"/>
-                {!isCollapsed && <span className="logo-text">ProjectJ</span>}
+            <div className="sidebar-header" onClick={() => setIsCollapsed(!isCollapsed)}>
+                <FaGem className="diamond-icon" />
+                {!isCollapsed && <span className="logo-text">Jewelify</span>}
+                <div className="collapse-toggle">
+                    {isCollapsed ? <FiChevronRight /> : <FiChevronLeft />}
+                </div>
             </div>
 
-            {/* Sidebar Menu */}
-            <ul className="sidebar-menu">
-                <li>
-                    <NavLink
-                        to="/account/main/home"
-                        className={({isActive}) => (isActive ? "active-link" : "")}
-                    >
-                        <AiOutlineHome className="sidebar-icon"/>
-                        {!isCollapsed && <span>Home</span>}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/account/main/image-to-image"
-                        className={({isActive}) => (isActive ? "active-link" : "")}
-                    >
-                        <AiOutlinePicture className="sidebar-icon"/>
-                        {!isCollapsed && <span>Sketch to Real</span>}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/account/main/text-to-image"
-                        className={({isActive}) => (isActive ? "active-link" : "")}
-                    >
-                        <AiOutlineFontSize className="sidebar-icon"/>
-                        {!isCollapsed && <span>Text to Image</span>}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/account/main/collections"
-                        className={({isActive}) => (isActive ? "active-link" : "")}
-                    >
-                        <AiOutlineAppstore className="sidebar-icon"/>
-                        {!isCollapsed && <span>Collections</span>}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/account/main/favourites"
-                        className={({isActive}) => (isActive ? "active-link" : "")}
-                    >
-                        <AiOutlineStar className="sidebar-icon"/>
-                        {!isCollapsed && <span>Favorites</span>}
-                    </NavLink>
-                </li>
-            </ul>
+            <nav className="sidebar-menu">
+                <ul>
+                    {menuItems.map((item, i) => (
+                        <li key={i}>
+                            <NavLink
+                                to={item.path}
+                                className={({ isActive }) => (isActive ? "active-link" : "")}
+                            >
+                                <span className="sidebar-icon">{item.icon}</span>
+                                {!isCollapsed && <span>{item.label}</span>}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
 
-            {/* Sidebar Footer */}
             <div className="sidebar-footer">
                 <button
-                    className="profile-button"
+                    className="profile-button glass"
                     onClick={() => setShowProfilePopup(!showProfilePopup)}
                 >
-                    <AiOutlineUser className="sidebar-icon"/>
-                    {!isCollapsed && <span>Profile</span>}
+                    <FiUser className="sidebar-icon" />
+                    {!isCollapsed && <span>{username}</span>}
                 </button>
 
-                {/* Profile Popup */}
                 {showProfilePopup && (
-                    <div className="profile-popup">
-                        <div className="popup-content">
-                            <h3 className="text-dark">Profile</h3>
-                            <p>Username: {username}</p>
-                            <button
-                                className="popup-button logout-button"
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
-                            <button
-                                className="popup-button close-popup-button"
-                                onClick={() => setShowProfilePopup(false)}
-                            >
-                                Close
+                    <div className="profile-popup glass fade-in">
+                        <div className="popup-header">
+                            <div className="user-avatar">{username[0].toUpperCase()}</div>
+                            <div className="user-info">
+                                <h3>{username}</h3>
+                                <p>Pro Designer</p>
+                            </div>
+                        </div>
+                        <div className="popup-actions">
+                            <button className="popup-btn" onClick={() => setShowProfilePopup(false)}>View Account</button>
+                            <button className="popup-btn logout" onClick={handleLogout}>
+                                <FiLogOut /> Logout
                             </button>
                         </div>
                     </div>

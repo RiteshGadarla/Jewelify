@@ -13,12 +13,14 @@ class CustomConv2DTranspose(keras.layers.Conv2DTranspose):
         super().__init__(*args, **kwargs)
 
 
+from logger import logger
+
 # Load the trained generator model
 model_path = r"generator.h5"
 generator = tf.keras.models.load_model(model_path, custom_objects={
     'LeakyReLU': LeakyReLU, 'Conv2DTranspose': CustomConv2DTranspose
 })
-print("🚀 Pix2Pix loaded successfully.")
+logger.info("Pix2Pix loaded successfully.")
 
 
 # Convert an input image to a sketch using OpenCV

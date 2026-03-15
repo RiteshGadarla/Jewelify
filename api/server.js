@@ -5,38 +5,38 @@ const session = require("express-session");
 require("dotenv").config();
 
 // Initialize Express app
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8001;
 const app = express();
 
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
-// Enable CORS (Cross-Origin Resource Sharing)
+// Enable CORS
+const CORS_ORIGIN = process.env.CORS_ORIGIN || "http://localhost:3000";
 app.use(cors({
-    origin: ["http://localhost:5000", "http://localhost:3000"],
+    origin: CORS_ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', "Cookie"],
     credentials: true,
 }));
 
-// MongoDB's connection string
+// MongoDB connection
 const MONGO_URI = process.env.MONGO_URI;
 
-// Connect to MongoDB Atlas database
 mongoose.connect(MONGO_URI, {})
-    .then(() => console.log("✅ Connection to Database Established."))
+    .then(() => console.log(`[${new Date().toISOString()}] [INFO] [Jewelify-API] Connection to Database Established.`))
     .catch((err) => {
-        console.error("❌ Database connection failed:", err.message);
+        console.error(`[${new Date().toISOString()}] [ERROR] [Jewelify-API] Database connection failed:`, err.message);
         process.exit(1);
     });
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || "jewelify_secret_key",
     resave: false,
     saveUninitialized: false,
     cookie: {
         maxAge: 30 * 60 * 1000,
-        SameSite: "None", // Necessary for cross-origin requests
+        SameSite: "None",
         secure: false,
     }
 }));
@@ -49,7 +49,7 @@ app.use('/user', userRoutes);
 
 // Start the server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on PORT: ${PORT}`);
+    console.log(`[${new Date().toISOString()}] [INFO] [Jewelify-API] Server running on PORT: ${PORT}`);
 });
 
 // Example endpoint for your backend

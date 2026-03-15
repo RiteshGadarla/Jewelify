@@ -1,121 +1,209 @@
-/* General HomeSB Container */
 .homeSB-container {
-    flex: 1;
+    padding: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.homeSB-wrapper {
+    padding: var(--spacing-xxl);
+    max-width: 1400px;
+    margin: 0 auto;
+    color: var(--text-primary);
+}
+
+.dashboard-header {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background */
-    height: 100vh;
-    overflow-y: auto;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xxl);
 }
 
-/* Main Content Area */
-.homeSB-content {
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -1px;
+}
+
+.dashboard-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+/* Highlights Section */
+.highlights-section {
+    padding: var(--spacing-xl);
+    overflow: hidden;
+}
+
+.inspiration-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: var(--spacing-lg);
+    aspect-ratio: 16/9;
+}
+
+.inspiration-card img {
     width: 100%;
-    max-width: 800px;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    color: #333;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
 }
 
-.homeSB-title {
-    font-size: 2rem;
-    color: #000000;
-    margin-bottom: 15px;
-    text-align: center;
+.inspiration-card:hover img {
+    transform: scale(1.05);
 }
 
-.homeSB-subtitle {
-    font-size: 1.6rem;
-    color: #444444;
-    margin-bottom: 10px;
+.inspiration-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-xl);
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+    color: white;
 }
 
-.homeSB-paragraph {
-    color: #555555;
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 15px;
+.inspiration-overlay h4 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
 }
 
-.homeSB-list {
-    list-style: none;
-    padding-left: 0;
+.inspiration-overlay p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin-bottom: 16px;
 }
 
-.homeSB-list-item {
+/* Actions Section */
+.actions-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.action-card {
+    padding: var(--spacing-lg);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    margin: 10px 0;
-    color: #333;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
 }
 
-/* About Section */
-.homeSB-about {
-    margin-bottom: 25px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-left: 5px solid #000000;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.action-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 4px;
 }
 
-/* Features Section */
-.homeSB-features {
-    margin-bottom: 25px;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+.action-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
-/* Call to Action Section */
-.homeSB-call-to-action {
-    text-align: center;
-    margin-top: 20px;
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
 }
 
-.homeSB-button {
-    display: inline-block;
-    margin: 10px;
-    padding: 12px 25px;
-    background-color: #000000;
-    color: #ffffff;
+.stat-card {
+    padding: var(--spacing-xl);
+    border-radius: 24px;
+}
+
+.stat-card h4 {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.stat-val {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.stat-trend {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.stat-trend.up {
+    color: var(--success);
+}
+
+.stat-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    background: var(--primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.btn-text {
+    background: none;
     border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
+    color: var(--primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0;
 }
 
-.homeSB-button:hover {
-    background-color: #b30000;
-    transform: scale(1.05);
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
-.homeSB-button-outline {
-    background-color: transparent;
-    color: #060707;
-    border: 2px solid #0c0e10;
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
 }
 
-.homeSB-button-outline:hover {
-    background-color: #007bff;
-    color: #ffffff;
-    transform: scale(1.05);
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .homeSB-content {
-        padding: 20px;
-    }
+.btn-secondary:hover {
+    background: var(--background);
+    border-color: var(--primary);
+    color: var(--primary);
 }

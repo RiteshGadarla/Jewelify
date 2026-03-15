@@ -1,0 +1,33 @@
+# Jewelify — Full ML Stack Requirements
+# Install this when running in ACTUAL mode (real AI pipeline).
+#
+# Usage:
+#   pip install -r requirements.txt
+#
+# ⚠️  These packages are large (several GB including model weights).
+#     Use requirements-dev.txt for lightweight development setup.
+
+# Web framework
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Image processing utilities
+Pillow>=10.0.0
+numpy>=1.24.0
+opencv-python>=4.8.0
+
+# TensorFlow / Keras — for the Pix2Pix GAN model
+tensorflow>=2.13.0
+keras>=2.13.0
+
+# PyTorch — for Stable Diffusion InstructPix2Pix
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Hugging Face pipeline (InstructPix2Pix diffusion model)
+diffusers>=0.21.0
+transformers>=4.33.0
+accelerate>=0.22.0
+# Environment configuration
+python-dotenv>=1.0.0

@@ -1,0 +1,15 @@
+# Jewelify — Minimal Development Mode Requirements
+# Install this when running in DEV mode (mock responses only).
+# No ML frameworks required — server starts in seconds.
+#
+# Usage:
+#   pip install -r requirements-dev.txt
+
+# Web framework
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Image handling for mock response generation (reading placeholder images)
+Pillow>=10.0.0
+# Environment configuration
+python-dotenv>=1.0.0

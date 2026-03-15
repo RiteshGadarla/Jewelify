@@ -10,7 +10,7 @@ export default function Main() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("http://localhost:8001/user/main", {
+                const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8001'}/user/main`, {
                     method: "POST",
                     credentials: "include",
                 });
@@ -31,21 +31,26 @@ export default function Main() {
     }, [navigate]);
 
     const handleLogout = async () => {
-        const response = await fetch("http://localhost:8001/user/logout", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+        try {
+            const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8001'}/user/logout`, {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
-        const result = await response.json();
-        alert(result.msg);
-
-        if (response.status === 200) {
-            window.location.href = "http://localhost:3000/account/login";
-        } else {
-            alert(result.error || "Logout failed.");
+            const result = await response.json();
+            
+            if (response.ok) {
+                sessionStorage.clear();
+                window.location.href = "/account/login";
+            } else {
+                alert(result.error || "Logout failed.");
+            }
+        } catch (error) {
+            console.error("Logout error:", error);
+            alert("An error occurred during logout.");
         }
     };
 

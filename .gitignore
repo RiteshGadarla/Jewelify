@@ -1,59 +1,120 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Jewelify — Git Ignore Rules
+# ============================================================
 
-# dependencies
+# -------------------------------------------------------------
+# Node.js
+# -------------------------------------------------------------
+node_modules/
 /node_modules
 /.pnp
 .pnp.js
-node_modules/
 
-# testing
+# -------------------------------------------------------------
+# Build output
+# -------------------------------------------------------------
+/build
+/dist
+dist/
+build/
+
+# -------------------------------------------------------------
+# Test coverage
+# -------------------------------------------------------------
 /coverage
 
-# production
-/build
-dist/
-
-# logs
+# -------------------------------------------------------------
+# Logs
+# -------------------------------------------------------------
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Optional npm cache directory
+# -------------------------------------------------------------
+# npm / yarn caches
+# -------------------------------------------------------------
 .npm
+.yarn-integrity
 
-# Optional eslint cache
+# -------------------------------------------------------------
+# ESLint cache
+# -------------------------------------------------------------
 .eslintcache
 
-# Optional REPL history
+# -------------------------------------------------------------
+# REPL history
+# -------------------------------------------------------------
 .node_repl_history
 
-# WebStorm project files
+# -------------------------------------------------------------
+# IDE / Editor files
+# -------------------------------------------------------------
 .idea/
-
-# Linux trash folder
+.vscode/
+.DS_Store
 .Trash-*
 
-# Debugging logs
-.vscode/
+# -------------------------------------------------------------
+# Environment configuration (contains secrets — do NOT commit)
+# Keep .env.example files (they are safe templates)
+# -------------------------------------------------------------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+api/.env
+api/model/.env
+client/.env
+*.env
 
-# Ignore upload and processed folders
+# -------------------------------------------------------------
+# Python virtual environments
+# -------------------------------------------------------------
+venv/
+.venv/
+env/
+ENV/
+api/model/venv/
+api/model/venv_test/
+
+# -------------------------------------------------------------
+# Python bytecode / cache
+# -------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+.pytest_cache/
+
+# -------------------------------------------------------------
+# Python distribution / packaging
+# -------------------------------------------------------------
+*.egg-info/
+dist/
+build/
+*.egg
+
+# -------------------------------------------------------------
+# ML model weights (large binary files — download separately)
+# -------------------------------------------------------------
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.bin
+
+# -------------------------------------------------------------
+# Uploaded / processed / collection image folders
+# (runtime output, not source code)
+# -------------------------------------------------------------
 uploads/
 processed/
 collection/
 
-# Ignore Python cache
-__pycache__/
-
-#Ignore .h5 files
-*.h5
-
-# Add after completion of everthing
-## misc
-#.DS_Store
-#.env.local
-#.env.development.local
-#.env.test.local
-#.env.production.local
-#.env
+# -------------------------------------------------------------
+# Jupyter Notebooks checkpoints
+# -------------------------------------------------------------
+.ipynb_checkpoints/

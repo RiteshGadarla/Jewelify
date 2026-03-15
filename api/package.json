@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "jewelify-api",
   "version": "2.0.0",
-  "description": "Jewellery Design Pattern Generation API",
+  "description": "Jewelify — Jewellery Design Pattern Generation API",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

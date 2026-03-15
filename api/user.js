@@ -6,7 +6,7 @@ const fs = require("fs");
 const fileUpload = require("express-fileupload");
 const router = express.Router();
 
-const COLLECTION_FOLDER = path.join(__dirname, '/model/collection');
+const COLLECTION_FOLDER = process.env.COLLECTION_FOLDER || path.join(__dirname, 'model', 'collection');
 // Enable file upload
 router.use(fileUpload({
     createParentPath: true, // Automatically create parent directories if they don't exist
@@ -195,7 +195,8 @@ router.get('/collection/:username', (req, res) => {
     }
 
     // If files exist, return their URLs
-    const fileUrls = files.map(file => `http://localhost:8001/user/collection/${username}/${file}`);
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const fileUrls = files.map(file => `${baseUrl}/user/collection/${username}/${file}`);
     return res.json(fileUrls);
 });
 

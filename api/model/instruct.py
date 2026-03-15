@@ -13,7 +13,10 @@ pipe = StableDiffusionInstructPix2PixPipeline.from_pretrained(
 pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(pipe.scheduler.config)
 pipe = pipe.to(device)
 
-print("🚀 Instruct pix2pix loaded")
+from logger import logger
+
+print("🚀 Instruct pix2pix loaded") # Keep simple print for module load indicator or replace with logger
+logger.info("Instruct pix2pix module loaded")
 
 
 def generate_image(image_path: str, output_path: str, prompt_id: int):
